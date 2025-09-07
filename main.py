@@ -199,8 +199,30 @@ while running:
 
     #Game over conditions
     if Lives == 0:
-        print(f"Game over your scour is {Score}")
-        break
+        font_big = pygame.font.SysFont(None, 72)
+        game_over_text = font_big.render("Game Over", True, RED)
+        final_score_text = font.render(f"Final Score: {Score}", True, (0, 0, 0))
+        instructions_text = font.render("Press Enter to Exit", True, (50, 50, 50))
+
+        screen.fill(WHITE)
+        screen.blit(game_over_text, ((WIDTH - game_over_text.get_width()) // 2, HEIGHT // 3))
+        screen.blit(final_score_text, ((WIDTH - final_score_text.get_width()) // 2, HEIGHT // 2))
+        screen.blit(instructions_text, ((WIDTH - instructions_text.get_width()) // 2, HEIGHT // 2 + 50))
+        pygame.display.flip()
+
+        waiting = True
+        while waiting:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    waiting = False
+                    running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN or event.key == pygame.K_ESCAPE:
+                        waiting = False
+                        running = False
+            clock.tick(15)  # Slow down the waiting loop
+
+        break  # Exit the game loop
        
 
     # Update screen
