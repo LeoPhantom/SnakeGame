@@ -1,2 +1,24 @@
-# Ignore Python virtual environment
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
 env/
+venv/
+.venv/
+
+# IDE/editor config
+.vscode/
+.idea/
+
+# Mac/Linux files
+.DS_Store
+
+# Logs
+*.log
+
+# Python package stuff
+*.egg-info/
+dist/
+build/
